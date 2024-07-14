@@ -22,7 +22,7 @@ const config: Config = {
         "secondary": "rgb(222, 108, 92)",
         "enter": "#0000001A"
         
-      }
+      },
     },
   },
   plugins: [],
