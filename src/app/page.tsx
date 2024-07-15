@@ -28,6 +28,7 @@ export default function Home() {
 	const [tarefas, setTarefas] = useState<Tarefa[]>([]);
 	const [filter, setFilter] = useState<TarefaFilter>(TarefaFilter.Todas);
 	const [counter, setCounter] = useState(0);
+	const [darkMode, setDarkMode] = useState(false)
 
 	function addNewTarefa(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
@@ -104,8 +105,12 @@ export default function Home() {
 		setFilter(TarefaFilter.Completas);
 	}
 
+	function toggleDarkMode() {
+		setDarkMode(!darkMode);
+	}
+
   	return (
-     	<div className="h-screen w-screen outline-1 outline-black flex flex-col items-center justify-center">
+     	<div className={`h-screen w-screen outline-1 outline-black flex flex-col items-center justify-center ${darkMode && "dark"} dark:bg-black`}>
 			<ToastContainer 
 				position="top-center"
 				closeOnClick
@@ -115,15 +120,15 @@ export default function Home() {
 				autoClose={3000}
 			/>
 			 
-			<main className="flex flex-col w-[461px] justify-center">
+			<main className="flex flex-col w-[461px] justify-center dark:bg-black">
 				
-				<Title />
+				<Title darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
 
-				<div className={`${patrick.className} outline outline-1 outline-black h-5/6 rounded-lg flex flex-col justify-between `}>
+				<div className={`${patrick.className} outline outline-1 outline-black dark:outline-secondary h-5/6 rounded-lg flex flex-col justify-between `}>
 					<div className="p-3 space-y-3 max-h-fit">
 						<CreateTaskField addNewTarefa={addNewTarefa}/>
 
-						<ProgressBar completed={tarefas.filter(tarefa => tarefa.completed).length/tarefas.length * 100} bgColor="black" height="12px" className="h-1" isLabelVisible={false}/>
+						<ProgressBar completed={tarefas.filter(tarefa => tarefa.completed).length/tarefas.length * 100} bgColor={darkMode ? "rgb(222, 108, 92)" : "black"} height="12px" className="h-1" isLabelVisible={false}/>
 					</div>
 
 					<TaskContainer 
