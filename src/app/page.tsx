@@ -86,6 +86,12 @@ export default function Home() {
 		]);
 	}
 
+	function deleteTask(taskId: number) {
+		setTarefas([
+			...tarefas.filter(tarefa => tarefa.id !== taskId)
+		])
+	}
+
 	function filterTodas() {
 		setFilter(TarefaFilter.Todas);
 	}
@@ -125,6 +131,7 @@ export default function Home() {
 						uncompleteTask={uncompleteTask}
 						filter={filter}
 						tarefas={tarefas}
+						deleteTask={deleteTask}
 					/>
 
 					<Footer 

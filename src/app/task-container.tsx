@@ -6,7 +6,8 @@ interface TaskContainerProps {
     tarefas: Tarefa[],
     filter: TarefaFilter,
     uncompleteTask: (taskId: number) => void,
-    completeTask: (taskId: number) => void
+    completeTask: (taskId: number) => void,
+    deleteTask: (taskId: number) => void
 }
 
 export function TaskContainer(
@@ -14,7 +15,8 @@ export function TaskContainer(
         tarefas,
         filter,
         uncompleteTask,
-        completeTask
+        completeTask,
+        deleteTask
     }:TaskContainerProps
 ) {
 
@@ -43,6 +45,7 @@ export function TaskContainer(
                         tarefa={tarefa}
                         completeTask={completeTask}
                         uncompleteTask={uncompleteTask}
+                        deleteTask={deleteTask}
                     />
                 )
             })}

@@ -1,6 +1,4 @@
-import { CheckSquare, Square } from "lucide-react";
-import { ReactNode } from "react";
-import { tv, VariantProps } from "tailwind-variants"
+import { CheckSquare, Square, Trash } from "lucide-react";
 
 export interface Tarefa {
 	id: number,
@@ -11,22 +9,30 @@ export interface Tarefa {
 interface TaskProps {
     tarefa: Tarefa,
     completeTask: (taskId: number) => void,
-    uncompleteTask: (taskId: number) => void
+    uncompleteTask: (taskId: number) => void,
+    deleteTask: (taskId:number) => void
 }
 
 export function Task(
     {
         tarefa,
         completeTask,
-        uncompleteTask
+        uncompleteTask,
+        deleteTask
     }: TaskProps
 ) {
     return (
-        <div key={tarefa.id} className="flex items-center gap-2 h-fit">
-            <button onClick={() => tarefa.completed ? uncompleteTask(tarefa.id) : completeTask(tarefa.id)}>
-                {tarefa.completed ? (<CheckSquare className="size-6"/>) : (<Square className="size-6"/>)}
+        <div className="flex items-center justify-between">
+            <div key={tarefa.id} className="flex items-center gap-2 h-fit">
+                <button onClick={() => tarefa.completed ? uncompleteTask(tarefa.id) : completeTask(tarefa.id)}>
+                    {tarefa.completed ? (<CheckSquare className="size-6"/>) : (<Square className="size-6"/>)}
+                </button>
+                <span className={`text-lg ${tarefa.completed && "line-through text-zinc-400"}`}>{tarefa.content}</span>
+            </div>
+            <button onClick={() => deleteTask(tarefa.id)}>
+                <Trash className="text-secondary"/>
             </button>
-            <span className={`text-lg ${tarefa.completed && "line-through text-zinc-400"}`}>{tarefa.content}</span>
         </div>
+        
     )
 }
