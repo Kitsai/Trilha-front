@@ -55,7 +55,7 @@ export default function Home() {
 
 		toast("Nova tarefa cadastrada!", {
 			icon: () => <CheckCircle2 className="size-6 text-black"/>,
-			className: "bg-primary flex items-center justify-center py-2.5 py-4 outline outline-black outline-2",
+			className: "bg-primary flex items-center justify-center py-2.5 py-4 outline outline-black outline-2 dark:outline-secondary dark:bg-black",
 			bodyClassName: `${patrick.className} text-black text-base`,
 			progressClassName: "bg-secondary"
 		});
@@ -114,7 +114,7 @@ export default function Home() {
 			<ToastContainer 
 				position="top-center"
 				closeOnClick
-				toastClassName={() => "flex items-center justify-center p-1 rounded-lg outline outline-2"}
+				toastClassName={() => "flex items-center justify-center p-1 rounded-lg outline outline-2 dark:bg-black"}
 				pauseOnHover={false}
 				theme="colored"
 				autoClose={3000}
