@@ -1,4 +1,3 @@
-import { CheckSquare, Square } from "lucide-react";
 import { TarefaFilter } from "./page";
 import { Tarefa, Task } from "./task";
 

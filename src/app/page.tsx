@@ -1,6 +1,6 @@
 'use client'
 
-import { CheckCircle2, CheckSquare, Square } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 import { FormEvent, useState } from "react";
 
